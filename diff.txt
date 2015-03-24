@@ -1,0 +1,11 @@
+Isauras-MacBook-Pro:ProjectGit isauragonzalezfontcuberta$ git diff
+diff --git a/my_text_file.txt b/my_text_file.txt
+index cd3d4ba..281ad3f 100644
+--- a/my_text_file.txt
++++ b/my_text_file.txt
+@@ -1 +1,2 @@
+-"This is a TXT file"
+\ No newline at end of file
++"This is a TXT file"
++Adding a second line to verify git diff
+\ No newline at end of file
