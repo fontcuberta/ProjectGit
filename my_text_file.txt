@@ -1,1 +1,3 @@
 "This is a TXT file"
+Adding a second line to verify git diff
+These changes are made to verify the third file commit on the new branch
