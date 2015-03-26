@@ -1,0 +1,1 @@
+Este archivo prueba que sí que puede leer y también escribir
