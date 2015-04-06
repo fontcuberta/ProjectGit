@@ -8,9 +8,22 @@ class Blog
 		@theseposts << post
 	end
 
+	def create_front_page
+		@theseposts = @theseposts.reverse
+		@arraystoshow = Array.new
+		@theseposts.each_slice(3) do |post|
+			@arraystoshow << post
+		end
+	end
+
 	def publish_front_page
-		@theseposts.reverse_each do |post|
-			puts post.show_post
+		count = 0
+		@arraystoshow.each do |little_array|
+			little_array.each do|post|
+				puts post.show_post
+			end
+			count = count + 1
+			puts "*****************************THIS IS THE PAGE " + count.to_s + "\n\n\n"
 		end
 	end
 end
@@ -62,6 +75,6 @@ my_blog.add_new_post(paid_post)
 my_blog.add_new_post(third_post)
 my_blog.add_new_post(fourth_post)
 my_blog.add_new_post(fifth_post)
-
+my_blog.create_front_page
 my_blog.publish_front_page
 
