@@ -9,7 +9,7 @@ class Blog
 	end
 
 	def publish_front_page
-		@theseposts.each do |post|
+		@theseposts.reverse_each do |post|
 			puts post.show_post
 		end
 	end
