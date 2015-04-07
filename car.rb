@@ -34,6 +34,10 @@ class RaceCar < Car
 end
 
 ParkingLot = Array.new
+fitipaldi = RaceCar.new
+fitipaldi.honk
+fitipaldi.cities
+
 car1 = Car.new("Pipipipi")
 car2 = Car.new ("Tururururu")
 car3 = Car.new ("Booooombomban!")

@@ -7,7 +7,7 @@ class Blog
 	def add_new_post(post)
 		@theseposts << post
 	end
-
+#create_front_page prepares arrays to be shown in pages. Creates pagination and indexes.
 	def create_front_page
 		@theseposts = @theseposts.reverse
 		@arraystoshow = Array.new
@@ -15,7 +15,7 @@ class Blog
 			@arraystoshow << post
 		end
 	end
-
+#publish_front_page extracts each post inserted in the arrays of arrays of posts and publishes them
 	def publish_front_page
 		count = 0
 		@arraystoshow.each do |little_array|
@@ -24,6 +24,7 @@ class Blog
 			end
 			count = count + 1
 			puts "*****************************THIS IS THE PAGE " + count.to_s + "\n\n\n"
+			sleep 1 while gets.chomp != "\e[C"
 		end
 	end
 end
@@ -48,7 +49,7 @@ class Post
 
 end
 
-#Advertising Post class
+#Advertising Post class. Ads format is different than Posts format.
 
 class Ad < Post
 	def show_post
@@ -61,7 +62,7 @@ class Ad < Post
 	end
 end
 
-
+#Creating and showing stuff (in the future it would be nice to create a methods to get it from keyboard)
 my_blog = Blog.new
 first_post = Post.new("Hello world", "This is my first post")
 second_post = Post.new("The Second Post", "Just imagine I have something to say")
