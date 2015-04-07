@@ -1,3 +1,5 @@
+require 'io/console'
+require 'colorize'
 #Blog class. the array holds every post created under the blog
 class Blog
 	def initialize
@@ -17,15 +19,23 @@ class Blog
 	end
 #publish_front_page extracts each post inserted in the arrays of arrays of posts and publishes them
 	def publish_front_page
-		count = 0
-		@arraystoshow.each do |little_array|
+		color = :green
+		@arraystoshow.each_with_index do |little_array, page|
 			little_array.each do|post|
-				puts post.show_post
+				puts post.show_post(color)
 			end
-			count = count + 1
-			puts "*****************************THIS IS THE PAGE " + count.to_s + "\n\n\n"
-			sleep 1 while gets.chomp != "\e[C"
+			puts ("*****************************THIS IS THE PAGE #{page + 1} \n\n\n").colorize(color)
+			color = color_for_page(page)
+			sleep 0.1 while STDIN.getch != "["
 		end
+	end
+#This method is called in publish_front_page just to assign the color to the page. It returns the value of color (line 27)
+	def color_for_page(page)
+		if page.odd?
+			:green
+		else
+			:blue
+		end	
 	end
 end
 
@@ -36,15 +46,15 @@ class Post
 	def initialize(title, text)
 		@title = title
 		@text = text
-		@date = Time.new
+		@date = Time.new.strftime("Published on %m/%d/%Y")
 	end
 
-	def show_post
-		puts "\n" + @title
-		puts "****************"
-		puts @text
-		puts "------------"
-		puts @date
+	def show_post(color)
+		puts (@title).colorize(color)
+		puts "****************".colorize(color)
+		puts (@text).colorize(color)
+		puts "------------".colorize(color)
+		puts (@date).colorize(color)
 	end
 
 end
@@ -52,13 +62,12 @@ end
 #Advertising Post class. Ads format is different than Posts format.
 
 class Ad < Post
-	def show_post
-		puts "Advertise Disclaimer: This is a Paid Post"
-		puts "\n*********" + @title + "*********"
-		puts "****************"
-		puts @text
-		puts "------------"
-		puts @date
+	def show_post(color)
+		puts "Advertise Disclaimer: This is a Paid Post".colorize(color)
+		puts ("\n*********" + @title + "*********").colorize(color)
+		puts (@text).colorize(color)
+		puts "------------".colorize(color)
+		puts (@date).colorize(color)
 	end
 end
 
@@ -70,12 +79,16 @@ paid_post = Ad.new("GET 1000$ CASH (and a very old flipflop)", "You just have to
 third_post = Post.new("The Third Wheel", "So you don't fall if you ride a bike")
 fourth_post = Post.new("The Fourth Hockey", "The Apocallypsis Now is coming")
 fifth_post = Post.new("The Fifth Element", "Well, now this is stupid and I have NOTHING to say. This should be a file")
+sixth_post = Post.new("The Sixth Killer", "Six is the devil number")
+paid_post_2 = Ad.new("GET 50000$ CASH", "SEND US YOUR ZIP CODE AND A GREEN MONKEY!!!")
 my_blog.add_new_post(first_post)
 my_blog.add_new_post(second_post)
 my_blog.add_new_post(paid_post)
 my_blog.add_new_post(third_post)
 my_blog.add_new_post(fourth_post)
 my_blog.add_new_post(fifth_post)
+my_blog.add_new_post(sixth_post)
+my_blog.add_new_post(paid_post_2)
 my_blog.create_front_page
 my_blog.publish_front_page
 
