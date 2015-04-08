@@ -94,11 +94,6 @@ class Enviroment
 		end
 	puts "WINNEEEEEERRRRRRR!!!"
 	end
-
-	def treeofchoices
-
-	end
-
 end
 
 
@@ -107,7 +102,8 @@ myLaby = Enviroment.new
 room_cow = Room.new("S", "Exit from room Cow", "A cow will eat you", "Room with cows", "The cow just ate. GAME OVER")
 room_cow.gun = "Sword"
 room_dog = Room.new("E", "Exit from room Dog", "A dog will eat you", "Room with dogs", "The dog just ate. GAME OVER")
-room_cat = Room.new("N", "Exit from room Cat", "A cat will eat you", "Room with cats", "The cat just ate. GAME OVER") 
+room_cat = Room.new("N", "Exit from room Cat", "A cat will eat you", "Room with cats", "The cat just ate. GAME OVER")
+room_cat = Room.new("N", "Exit from room Bat", "A bat will eat you", "Room with bats", "The bat just ate. GAME OVER")
 room_cat.gun = "Magnum"
 myLaby.add_room(room_cow)
 myLaby.add_room(room_dog)
