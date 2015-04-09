@@ -42,6 +42,7 @@ end
 class PasswordfromFile
 	def initialize
 		@file = JSON.parse(IO.read("password.txt"))
+			binding.pry
 	end
 
 	def execute(user)
