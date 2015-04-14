@@ -1,0 +1,12 @@
+
+header, footer {
+	width: 30%;
+	text-align: center;
+	height: 30px
+	margin-left: 20px;
+	margin-top: 10px;
+	color: #111111;
+	border-radius: 10px;
+	background-color: rgba(62, 95, 106, 0.52);
+	box-shadow: 0 4px 2px -2px gray;
+}
